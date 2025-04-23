@@ -1,0 +1,109 @@
+﻿unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Data.DB, Vcl.DBGrids,
+  Vcl.Grids, MyAccess, Vcl.StdCtrls, Vcl.DBCtrls, MemDS, DBAccess, Vcl.ExtCtrls,
+  Vcl.Buttons;
+
+type
+  TForm1 = class(TForm)
+    PageControl1: TPageControl;
+    TabGeneral: TTabSheet;
+    TabAddress: TTabSheet;
+    TabEndUserInfo: TTabSheet;
+    TabStatistic: TTabSheet;
+    TabServiceAgreement: TTabSheet;
+    TabCompanyProfile: TTabSheet;
+    MyConnection1: TMyConnection;
+    MyQuery1: TMyQuery;
+    DataSource1: TDataSource;
+    Panel1: TPanel;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    Label2: TLabel;
+    edtPrintSerial: TEdit;
+    GroupBox1: TGroupBox;
+    Label3: TLabel;
+    Label4: TLabel;
+    edtLoginPassword: TEdit;
+    cmbSalesman: TComboBox;
+    Label5: TLabel;
+    edtPaymentTerm: TEdit;
+    Label6: TLabel;
+    edtValidDay: TEdit;
+    Label7: TLabel;
+    edtWarranty: TEdit;
+    Panel2: TPanel;
+    CheckBox1: TCheckBox;
+    CheckBox2: TCheckBox;
+    CheckBox3: TCheckBox;
+    DBGrid1: TDBGrid;
+    MyQueryContacts: TMyQuery;
+    DataSourceContacts: TDataSource;
+    procedure FormCreate(Sender: TObject);
+    procedure DBGrid1CellClick(Column: TColumn);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  // 初始化資料庫連接
+  MyConnection1.Server := 'localhost';
+  MyConnection1.Port := 3306;
+  MyConnection1.Database := 'testdb';
+  MyConnection1.Username := 'root';
+  MyConnection1.Password := 'p#x]m[n7R$=35*48!qE%rv';
+  
+  try
+    MyConnection1.Connect;
+    
+    // 設定主要查詢
+    MyQuery1.SQL.Text := 'SELECT * FROM customers';
+    MyQuery1.Active := True;
+    
+    // 設定聯絡資料查詢
+    MyQueryContacts.SQL.Text := 
+      'SELECT * FROM contact_details WHERE customer_id = :id ORDER BY contact_type';
+    MyQueryContacts.Active := True;
+  except
+    on E: Exception do
+      ShowMessage('資料庫連接錯誤: ' + E.Message);
+  end;
+  
+  // 設定預設值
+  PageControl1.ActivePage := TabGeneral;
+  
+  // 初始化下拉選單
+  cmbSalesman.Items.Add('Company');
+  cmbSalesman.ItemIndex := 0;
+end;
+
+procedure TForm1.DBGrid1CellClick(Column: TColumn);
+begin
+  if not MyQuery1.IsEmpty then
+  begin
+    // 清除舊資料
+    edtLoginPassword.Text := '';
+    edtPaymentTerm.Text := '';
+    edtValidDay.Text := '';
+    edtWarranty.Text := '';
+    
+    // 設定新資料
+    cmbSalesman.ItemIndex := 0; // 預設為 Company
+  end;
+end;
+
+end.
