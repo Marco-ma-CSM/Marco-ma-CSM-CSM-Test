@@ -19,9 +19,9 @@ if not exist .git (
 )
 
 git add .
-git commit -m "Daily auto commit %date% %time%"
+git commit -m "Initial commit"
 git remote add origin https://github.com/Marco-ma-CSM/Marco-ma-CSM-CSM-Test.git
-git push origin master
+git push -u origin master
 
 REM °O¿ý§¹¦¨ª¬ºA
 if %errorlevel% equ 0 (
@@ -31,3 +31,5 @@ if %errorlevel% equ 0 (
 )
 
 git remote -v
+
+git config --global credential.helper store

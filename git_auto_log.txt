@@ -1,3 +1,5 @@
 Starting auto git push at 23/04/2025 ¶g¤T 18:29:38.34 
 Error: Not a git repository 
 Starting auto git push at 23/04/2025 ¶g¤T 18:33:22.52 
+Push failed with error code 1 
+Starting auto git push at 23/04/2025 ¶g¤T 18:34:41.93 
