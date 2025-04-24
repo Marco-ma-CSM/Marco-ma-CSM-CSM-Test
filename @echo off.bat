@@ -4,6 +4,13 @@ cd C:\Users\Marco.ma\Documents\Embarcadero\Studio\Case1
 REM 記錄開始時間
 echo Starting auto git push at %date% %time% >> git_auto_log.txt
 
+
+REM 檢查並移除已存在的遠端倉庫設定
+REM git remote remove origin
+
+REM 重新添加遠端倉庫
+REM git remote add origin https://github.com/Marco-ma-CSM/Marco-ma-CSM-CSM-Test.git
+
 REM 添加所有變更
 git add .
 
@@ -20,6 +27,6 @@ if %errorlevel% equ 0 (
     echo Push failed with error code %errorlevel% >> git_auto_log.txt
 )
 
-git remote -v
+REM git remote -v
 
-git config --global credential.helper store
+REM git config --global credential.helper store
