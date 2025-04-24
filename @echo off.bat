@@ -1,6 +1,6 @@
 @echo off
 cd C:\Users\Marco.ma\Documents\Embarcadero\Studio\Case1
-
+chcp 65001 > nul
 REM 記錄開始時間
 echo Starting auto git push at %date% %time% >> git_auto_log.txt
 
