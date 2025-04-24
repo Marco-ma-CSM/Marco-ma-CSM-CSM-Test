@@ -1,25 +1,19 @@
 @echo off
 cd C:\Users\Marco.ma\Documents\Embarcadero\Studio\Case1
 
-REM °O¿ý¶}©l®É¶¡
+REM è¨˜éŒ„é–‹å§‹æ™‚é–“
 echo Starting auto git push at %date% %time% >> git_auto_log.txt
 
-REM ÀË¬d¨Ã²¾°£¤w¦s¦bªº»·ºÝ­Ü®w³]©w
-git remote remove origin
-
-REM ­«·s²K¥[»·ºÝ­Ü®w
-git remote add origin https://github.com/Marco-ma-CSM/Marco-ma-CSM-CSM-Test.git
-
-REM ²K¥[©Ò¦³ÅÜ§ó
+REM æ·»åŠ æ‰€æœ‰è®Šæ›´
 git add .
 
-REM ´£¥æÅÜ§ó
+REM æäº¤è®Šæ›´
 git commit -m "Daily auto commit %date% %time%"
 
-REM ±j¨î±À°e¨ì master ¤À¤ä
-git push -f origin master
+REM æŽ¨é€åˆ° master åˆ†æ”¯
+git push origin master
 
-REM °O¿ý§¹¦¨ª¬ºA
+REM è¨˜éŒ„å®Œæˆç‹€æ…‹
 if %errorlevel% equ 0 (
     echo Push completed successfully >> git_auto_log.txt
 ) else (
