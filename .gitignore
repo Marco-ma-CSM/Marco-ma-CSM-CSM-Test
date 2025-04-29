@@ -51,3 +51,4 @@ Win64/
 *.local
 *.identcache
 *.txaPackage
+*.tvsconfig
