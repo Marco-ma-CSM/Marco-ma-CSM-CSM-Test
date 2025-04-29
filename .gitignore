@@ -1,0 +1,53 @@
+# Delphi 專案相關
+# 編譯生成的檔案
+*.exe
+*.dll
+*.bpl
+*.bpi
+*.dcp
+*.dcu
+*.~*
+*.ddp
+*.bak
+*.obj
+*.o
+*.a
+*.so
+*.lib
+*.res
+*.identcache
+*.local
+*.stat
+*.map
+*.drc
+*.dsk
+*.rsm
+
+# 編譯輸出目錄
+history/
+__history/
+__recovery/
+Win32/
+Win64/
+
+# Delphi IDE 相關
+*.groupproj
+*.groupproj.local
+*.projdata
+*.projdata.local
+*.dproj.local
+*.dproj
+*.skincfg
+*.vlb
+*.vrc
+
+# 其他暫存檔案
+*.tmp
+*.log
+*.cache
+*.autosave
+
+# 本地設定
+*.local
+*.identcache
+*.txaPackage
